@@ -422,10 +422,12 @@ image."
   (let ((kill-buffer-query-functions nil)
         ;; This is added to in `org-babel-jupyter-initiate-session-by-key'
         (kill-buffer-hook nil)
+        ;; BUG override user customisations?
+        ;; BUG org-format-latex also ignores at least :matchers currently 
         (org-format-latex-options
          `(:foreground
            default
-           :background default :scale 2.0
+           :background default :scale 1.0 ; why 2.0?
            :matchers ,(plist-get org-format-latex-options :matchers))))
     (jupyter-with-insertion-bounds
         beg end (insert tex)
